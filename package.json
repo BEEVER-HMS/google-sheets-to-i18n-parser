@@ -1,0 +1,20 @@
+{
+  "name": "google-sheets-to-i18n-parser",
+  "version": "1.0.0",
+  "description": "Converts Google Spreadsheet in specific format to JSON format for i18n purposes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BEEVER-HMS/google-sheets-to-i18n-parser.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BEEVER-HMS/google-sheets-to-i18n-parser/issues"
+  },
+  "homepage": "https://github.com/BEEVER-HMS/google-sheets-to-i18n-parser#readme"
+}
