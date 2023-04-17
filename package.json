@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/BEEVER-HMS/google-sheets-to-i18n-parser/issues"
   },
-  "homepage": "https://github.com/BEEVER-HMS/google-sheets-to-i18n-parser#readme"
+  "homepage": "https://github.com/BEEVER-HMS/google-sheets-to-i18n-parser#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "google-spreadsheet": "^3.3.0"
+  }
 }

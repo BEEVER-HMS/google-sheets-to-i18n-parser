@@ -1,5 +1,8 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const fs = require('fs');
+const dotenv = require('dotenv')
+
+dotenv.config();
 
 function checkString(str) {
   if (
@@ -38,25 +41,32 @@ async function parseSheets(clientId, privateKey, spreadsheetId, sheetId = '0') {
   rows.forEach(row => {
     Object.keys(lang).forEach(langCode => {
       const langWord = row[langCode];
-      const codeKeys = row['CountryCode'].split('.');
+      console.log('testCountryCode',row.Code);
 
-      if (codeKeys.length > 1) {
-        let startObj = lang[langCode];
+      if(!row.Code) return;
 
-        codeKeys.forEach((codeKey, index) => {
-          if (index < codeKeys.length - 1) {
-            if (!startObj[codeKey]) {
-              startObj[codeKey] = {};
+
+      const codeKeys = row.Code.split('.');
+
+      if(typeof codeKeys === 'string'){
+        if (codeKeys.length > 1) {
+          let startObj = lang[langCode];
+  
+          codeKeys.forEach((codeKey, index) => {
+            if (index < codeKeys.length - 1) {
+              if (!startObj[codeKey]) {
+                startObj[codeKey] = {};
+              }
+  
+              startObj = startObj[codeKey];
+              return;
             }
-
-            startObj = startObj[codeKey];
-            return;
-          }
-
-          startObj[codeKey] = langWord;
-        });
-
-        return;
+  
+            startObj[codeKey] = langWord;
+          });
+  
+          return;
+        }
       }
 
       lang[langCode][codeKeys[0]] = langWord;
@@ -70,6 +80,8 @@ async function parseSheets(clientId, privateKey, spreadsheetId, sheetId = '0') {
       JSON.stringify(lang[key], null, 2)
     ));
 }
+
+console.log('tst', process.env);
 
 parseSheets(
   process.env.CLIENT_ID,
