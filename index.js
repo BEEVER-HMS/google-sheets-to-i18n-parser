@@ -41,7 +41,7 @@ async function parseSheets(clientId, privateKey, spreadsheetId, sheetId = '0') {
   rows.forEach(row => {
     Object.keys(lang).forEach(langCode => {
       const langWord = row[langCode];
-      console.log('testCountryCode',row.Code);
+      // console.log('testCountryCode',row.Code);
 
       if(!row.Code) return;
 
